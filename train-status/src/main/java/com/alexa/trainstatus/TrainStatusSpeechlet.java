@@ -17,7 +17,7 @@ import com.amazon.speech.ui.SimpleCard;
 
 public class TrainStatusSpeechlet implements SpeechletV2 {
 
-    private static final String TRAIN_NUMBER = "trainNumber";
+    private static final String TRAIN_NUMBER = "TrainNumber";
     private TrainService trainService;
 
     @Override

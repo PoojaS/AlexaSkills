@@ -1,0 +1,10 @@
+{
+  "intents": [
+    {
+      "intent": "TrainStatusIntent"
+    },
+    {
+      "intent": "HelpIntent"
+    }
+  ]
+}

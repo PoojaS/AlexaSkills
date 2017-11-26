@@ -63,7 +63,7 @@ public class TrainStatusSpeechletTest {
     public void shouldReceiveTrainNumberInIntent() {
         IntentRequest intentRequestMock = mock(IntentRequest.class);
         when(mockIntentEnvelope.getRequest()).thenReturn(intentRequestMock);
-        Slot trainNumberSlot = new Slot.Builder().withName("trainNumber").withValue("123456").build();
+        Slot trainNumberSlot = new Slot.Builder().withName("TrainNumber").withValue("123456").build();
         when(intentRequestMock.getIntent()).thenReturn(new Intent.Builder()
                                                                  .withName("TrainStatusIntent")
                                                                  .withSlot(trainNumberSlot)
