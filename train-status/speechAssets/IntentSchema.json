@@ -1,7 +1,13 @@
 {
   "intents": [
     {
-      "intent": "TrainStatusIntent"
+      "intent": "TrainStatusIntent",
+      "slots": [
+        {
+          "name" : "TrainNumber",
+          "type": "AMAZON.NUMBER"
+        }
+      ]
     },
     {
       "intent": "HelpIntent"

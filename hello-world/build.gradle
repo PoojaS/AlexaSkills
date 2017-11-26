@@ -8,12 +8,3 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
 }
-
-
-task fatJar(type: Jar) {
-    baseName = project.name + '-fat'
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-    with jar
-}
-
-build.dependsOn fatJar

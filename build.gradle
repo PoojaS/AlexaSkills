@@ -32,4 +32,12 @@ subprojects {
         testCompile group: 'org.mockito', name: 'mockito-all', version: '1.9.5'
 
     }
+
+    task fatJar(type: Jar) {
+        baseName = project.name + '-fat'
+        from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+        with jar
+    }
+
+    build.dependsOn fatJar
 }
