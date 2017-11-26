@@ -11,7 +11,6 @@ import com.amazon.speech.speechlet.SessionStartedRequest;
 import com.amazon.speech.speechlet.SpeechletResponse;
 import com.amazon.speech.speechlet.SpeechletV2;
 import com.amazon.speech.ui.Card;
-import com.amazon.speech.ui.OutputSpeech;
 import com.amazon.speech.ui.PlainTextOutputSpeech;
 import com.amazon.speech.ui.Reprompt;
 import com.amazon.speech.ui.SimpleCard;
@@ -28,7 +27,11 @@ public class TrainStatusSpeechlet implements SpeechletV2 {
 
     @Override
     public SpeechletResponse onLaunch(SpeechletRequestEnvelope<LaunchRequest> requestEnvelope) {
-        return null;
+        String speechText = "Welcome to the Alexa Train Status Skill, you can say your train number";
+        PlainTextOutputSpeech speech = getSpeech(speechText);
+        return SpeechletResponse.newAskResponse(speech,
+                getReprompt(speech),
+                getSimpleCard(speechText));
     }
 
     @Override
