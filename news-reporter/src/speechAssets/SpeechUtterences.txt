@@ -1,0 +1,1 @@
+NewsReporterIntent get news from fox news
