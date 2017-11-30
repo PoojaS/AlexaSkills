@@ -11,8 +11,9 @@ public class NewsApiClient {
 
     private OkHttpClient httpClient;
 
-    public NewsApiClient(OkHttpClient httpClient) {
-        this.httpClient = httpClient;
+    OkHttpClient getHttpClient() {
+        httpClient = httpClient != null ? httpClient : new OkHttpClient();
+        return httpClient;
     }
 
     public Optional<String> getTopHeadlines(String source) throws IOException {
@@ -20,7 +21,7 @@ public class NewsApiClient {
         String newsApiHeadlinesEndPoint = "https://newsapi.org/v2/top-headlines?sources=" + source + "&apiKey={API_KEY}";
         Request request = new Request.Builder().url(newsApiHeadlinesEndPoint).build();
         Response response;
-        response = httpClient.newCall(request).execute();
+        response = getHttpClient().newCall(request).execute();
         return response != null && response.body() != null
                                             ? Optional.of(response.body().string()) : Optional.empty();
     }

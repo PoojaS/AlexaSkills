@@ -21,6 +21,7 @@ import java.util.Optional;
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -35,14 +36,14 @@ public class NewsApiClientTest {
 
     @Before
     public void setUp() throws Exception {
-        newsApiClient = new NewsApiClient(mockHttpClient);
+        newsApiClient = spy(new NewsApiClient());
+        when(newsApiClient.getHttpClient()).thenReturn(mockHttpClient);
         mockRequest = new Request.Builder().url("https://newsapi" +
                 ".org/v2/top-headlines?sources=fox-news&apiKey={API_KEY}").build();
     }
 
     @Test
     public void shouldReturnApiHeadlinesApiResponse() throws Exception {
-        Call mockCall = mock(Call.class);
         when(mockHttpClient.newCall(any(Request.class))).thenReturn(new MockCall());
 
         Optional<String> topHeadlines = newsApiClient.getTopHeadlines("fox-news");
