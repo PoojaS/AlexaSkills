@@ -1,4 +1,5 @@
 rootProject.name = 'alexa-skills'
 include ':hello-world'
 include 'train-status'
+include 'news-reporter'
 
