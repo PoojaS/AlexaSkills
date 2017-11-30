@@ -29,6 +29,16 @@ public class NewsReporterSpeechlet implements SpeechletV2 {
 
     }
 
+    @Override
+    public SpeechletResponse onIntent(SpeechletRequestEnvelope<IntentRequest> requestEnvelope) {
+        return null;
+    }
+
+    @Override
+    public void onSessionEnded(SpeechletRequestEnvelope<SessionEndedRequest> requestEnvelope) {
+
+    }
+
     //TODO: Move to a common module
     private Reprompt getReprompt(PlainTextOutputSpeech speech) {
         Reprompt reprompt = new Reprompt();
@@ -47,15 +57,5 @@ public class NewsReporterSpeechlet implements SpeechletV2 {
         PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
         outputSpeech.setText(speechText);
         return outputSpeech;
-    }
-
-    @Override
-    public SpeechletResponse onIntent(SpeechletRequestEnvelope<IntentRequest> requestEnvelope) {
-        return null;
-    }
-
-    @Override
-    public void onSessionEnded(SpeechletRequestEnvelope<SessionEndedRequest> requestEnvelope) {
-
     }
 }
